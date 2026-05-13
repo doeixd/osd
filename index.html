@@ -106,9 +106,41 @@
             color: #353535;
             line-height: 1.1;
         }
+
+        .corner {
+            position: fixed;
+            width: clamp(120px, 20vw, 300px);
+            height: auto;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .corner.top-left {
+            top: 0;
+            left: 0;
+        }
+
+        .corner.top-right {
+            top: 0;
+            right: 0;
+        }
+
+        .corner.bottom-left {
+            bottom: 0;
+            left: 0;
+        }
+
+        .corner.bottom-right {
+            bottom: 0;
+            right: 0;
+        }
     </style>
 </head>
 <body>
+    <img src="top-left.png" alt="" class="corner top-left" aria-hidden="true">
+    <img src="top-right.png" alt="" class="corner top-right" aria-hidden="true">
+    <img src="bottom-left.png" alt="" class="corner bottom-left" aria-hidden="true">
+    <img src="bottom-right.png" alt="" class="corner bottom-right" aria-hidden="true">
     <div class="hero">
         <p class="eyebrow">Coming Soon</p>
         <h1>Ocean State Digital</h1>

@@ -109,9 +109,11 @@
 
         .corner {
             position: fixed;
-            width: clamp(120px, 20vw, 300px);
+            width: auto;
             height: auto;
+            max-width: clamp(120px, 20vw, 300px);
             max-height: clamp(100px, 22vh, 280px);
+            object-fit: contain;
             pointer-events: none;
             z-index: 0;
         }

@@ -116,22 +116,29 @@
             display: inline-block;
             margin-bottom: 1rem;
             cursor: pointer;
+            width: clamp(160px, 22dvw, 280px);
+            aspect-ratio: 1 / 1;
         }
 
         .logo-wrapper img,
         .logo-wrapper video {
-            width: 120px;
-            height: auto;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
             display: block;
+        }
+
+        .logo-wrapper img {
+            z-index: 1;
             transition: opacity 0.3s ease;
         }
 
         .logo-wrapper video {
-            position: absolute;
-            top: 0;
-            left: 0;
+            z-index: 2;
             opacity: 0;
-            pointer-events: none;
+            transition: opacity 0.3s ease 0.3s;
         }
 
         .logo-wrapper:hover img {
@@ -192,10 +199,22 @@
     <div class="hero">
         <div class="logo-wrapper">
             <img src="/logo.png" alt="Ocean State Digital">
-            <video src="/video.mp4" muted loop playsinline autoplay></video>
+            <video src="/video.mp4" muted loop playsinline preload="auto"></video>
         </div>
         <p class="eyebrow">Coming Soon</p>
         <h1>Ocean State Digital</h1>
     </div>
+    <script>
+        const wrapper = document.querySelector('.logo-wrapper');
+        const video = wrapper.querySelector('video');
+
+        wrapper.addEventListener('mouseenter', () => {
+            video.play().catch(() => {});
+        });
+
+        wrapper.addEventListener('mouseleave', () => {
+            video.pause();
+        });
+    </script>
 </body>
 </html>

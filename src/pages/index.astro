@@ -111,6 +111,37 @@
             line-height: 1.1;
         }
 
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .logo-wrapper img,
+        .logo-wrapper video {
+            width: 120px;
+            height: auto;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .logo-wrapper:hover img {
+            opacity: 0;
+        }
+
+        .logo-wrapper:hover video {
+            opacity: 1;
+        }
+
         .corner {
             position: fixed;
             width: auto;
@@ -159,6 +190,10 @@
     <img src="/bottom-left.png" alt="" class="corner bottom-left" aria-hidden="true">
     <img src="/bottom-right.png" alt="" class="corner bottom-right" aria-hidden="true">
     <div class="hero">
+        <div class="logo-wrapper">
+            <img src="/logo.png" alt="Ocean State Digital">
+            <video src="/video.mp4" muted loop playsinline autoplay></video>
+        </div>
         <p class="eyebrow">Coming Soon</p>
         <h1>Ocean State Digital</h1>
     </div>

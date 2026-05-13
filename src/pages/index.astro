@@ -115,11 +115,21 @@
             position: fixed;
             width: auto;
             height: auto;
-            max-width: clamp(70px, 10vw, 120px);
-            max-height: clamp(85px, 15vh, 190px);
             object-fit: contain;
             pointer-events: none;
             z-index: 0;
+        }
+
+        .corner.top-left,
+        .corner.top-right {
+            max-width: clamp(100px, 20vw, 260px);
+            max-height: clamp(85px, 17vh, 221px);
+        }
+
+        .corner.bottom-left,
+        .corner.bottom-right {
+            max-width: clamp(70px, 10vw, 120px);
+            max-height: clamp(85px, 15vh, 190px);
         }
 
         .corner.top-left {

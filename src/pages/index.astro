@@ -152,8 +152,12 @@
             opacity: 0;
         }
 
-        .logo-wrapper.playing video,
-        .logo-wrapper:hover video {
+        .logo-wrapper.playing .video-forward,
+        .logo-wrapper:hover .video-forward {
+            opacity: 1;
+        }
+
+        .logo-wrapper.reversing .video-reverse {
             opacity: 1;
         }
 
@@ -207,37 +211,36 @@
     <div class="hero">
         <div class="logo-wrapper">
             <img src="/logo.png?v=2" alt="Ocean State Digital">
-            <video src="/video.mp4?v=2" muted playsinline preload="auto"></video>
+            <video class="video-forward" src="/video.mp4?v=2" muted playsinline preload="auto"></video>
+            <video class="video-reverse" src="/video-reverse.mp4?v=2" muted playsinline preload="auto"></video>
         </div>
         <p class="eyebrow">Coming Soon</p>
         <h1>Ocean State Digital</h1>
     </div>
     <script>
         const wrapper = document.querySelector('.logo-wrapper');
-        const video = wrapper.querySelector('video');
-        let isReversing = false;
+        const forwardVideo = wrapper.querySelector('.video-forward');
+        const reverseVideo = wrapper.querySelector('.video-reverse');
 
-        function resetVideo() {
-            video.pause();
-            video.playbackRate = 1;
-            video.currentTime = 0;
-            wrapper.classList.remove('playing');
-            isReversing = false;
+        function resetAll() {
+            forwardVideo.pause();
+            forwardVideo.currentTime = 0;
+            reverseVideo.pause();
+            reverseVideo.currentTime = 0;
+            wrapper.classList.remove('playing', 'reversing');
         }
 
         function playForward() {
-            video.playbackRate = 1;
-            video.currentTime = 0;
+            resetAll();
             wrapper.classList.add('playing');
-            isReversing = false;
-            video.play().catch(() => {});
+            forwardVideo.play().catch(() => {});
         }
 
         function playReverse() {
-            isReversing = true;
-            video.playbackRate = -1;
-            video.currentTime = video.duration || video.seekable.end(0);
-            video.play().catch(() => {});
+            wrapper.classList.remove('playing');
+            wrapper.classList.add('reversing');
+            reverseVideo.currentTime = 0;
+            reverseVideo.play().catch(() => {});
         }
 
         // Desktop hover
@@ -249,32 +252,28 @@
 
         wrapper.addEventListener('mouseleave', () => {
             if (window.matchMedia('(hover: hover)').matches) {
-                resetVideo();
+                resetAll();
             }
         });
 
         // Mobile / touch tap
         wrapper.addEventListener('touchstart', (e) => {
             e.preventDefault();
-            if (wrapper.classList.contains('playing')) {
-                resetVideo();
+            if (wrapper.classList.contains('playing') || wrapper.classList.contains('reversing')) {
+                resetAll();
             } else {
                 playForward();
             }
         }, { passive: false });
 
-        // When video reaches end, play in reverse
-        video.addEventListener('ended', () => {
-            if (!isReversing) {
-                playReverse();
-            }
+        // When forward video ends, play reverse
+        forwardVideo.addEventListener('ended', () => {
+            playReverse();
         });
 
-        // When reverse playback reaches start, fade logo back in
-        video.addEventListener('timeupdate', () => {
-            if (isReversing && video.currentTime <= 0.05) {
-                resetVideo();
-            }
+        // When reverse video ends, show logo
+        reverseVideo.addEventListener('ended', () => {
+            resetAll();
         });
     </script>
 </body>

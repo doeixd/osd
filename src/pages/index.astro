@@ -232,9 +232,18 @@
         let isHovering = false;
 
         function resetVisuals() {
+            // Instantly hide videos to prevent flash of last frame during fade-out
+            forwardVideo.style.opacity = '0';
+            reverseVideo.style.opacity = '0';
             forwardVideo.pause();
             reverseVideo.pause();
             wrapper.classList.remove('playing', 'reversing');
+
+            // Clear inline styles after logo transition completes
+            setTimeout(() => {
+                forwardVideo.style.opacity = '';
+                reverseVideo.style.opacity = '';
+            }, 350);
         }
 
         function fullReset() {

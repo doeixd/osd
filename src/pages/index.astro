@@ -161,6 +161,10 @@
             opacity: 1;
         }
 
+        .logo-wrapper.reversing img {
+            opacity: 0;
+        }
+
         .logo-wrapper.reversing .video-reverse {
             opacity: 1;
         }
@@ -227,16 +231,20 @@
         const reverseVideo = wrapper.querySelector('.video-reverse');
         let isHovering = false;
 
-        function resetAll() {
+        function resetVisuals() {
             forwardVideo.pause();
-            forwardVideo.currentTime = 0;
             reverseVideo.pause();
-            reverseVideo.currentTime = 0;
             wrapper.classList.remove('playing', 'reversing');
         }
 
+        function fullReset() {
+            resetVisuals();
+            forwardVideo.currentTime = 0;
+            reverseVideo.currentTime = 0;
+        }
+
         function playForward() {
-            resetAll();
+            fullReset();
             wrapper.classList.add('playing');
             forwardVideo.play().catch(() => {});
         }
@@ -259,7 +267,7 @@
         wrapper.addEventListener('mouseleave', () => {
             if (window.matchMedia('(hover: hover)').matches) {
                 isHovering = false;
-                resetAll();
+                fullReset();
             }
         });
 
@@ -267,7 +275,7 @@
         wrapper.addEventListener('touchstart', (e) => {
             e.preventDefault();
             if (wrapper.classList.contains('playing') || wrapper.classList.contains('reversing')) {
-                resetAll();
+                fullReset();
             } else {
                 playForward();
             }
@@ -278,9 +286,13 @@
             playReverse();
         });
 
-        // When reverse video ends, show logo
+        // When reverse video ends, fade to logo then fully reset
         reverseVideo.addEventListener('ended', () => {
-            resetAll();
+            resetVisuals();
+            setTimeout(() => {
+                forwardVideo.currentTime = 0;
+                reverseVideo.currentTime = 0;
+            }, 350);
         });
     </script>
 </body>

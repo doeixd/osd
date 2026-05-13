@@ -8,15 +8,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ocean State Digital</title>
-    <link rel="icon" href="/favicon.ico?v=3" sizes="any">
+    <link rel="icon" href="/favicon.ico?v=4" sizes="any">
     <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="/logo.png?v=3">
-    <link rel="preload" as="video" href="/video.mp4?v=3" type="video/mp4">
-    <link rel="preload" as="video" href="/video-reverse.mp4?v=3" type="video/mp4">
+    <link rel="preload" as="image" href="/logo.png?v=4">
+    <link rel="preload" as="video" href="/video.mp4?v=4" type="video/mp4">
     <style>
         @import url('https://fonts.cdnfonts.com/css/hero-beam');
 
@@ -127,17 +126,7 @@
             aspect-ratio: 1 / 1;
         }
 
-        .logo-wrapper img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-            z-index: 1;
-            transition: opacity 0.3s ease;
-        }
-
+        .logo-wrapper img,
         .logo-wrapper video {
             position: absolute;
             inset: 0;
@@ -146,26 +135,22 @@
             object-fit: contain;
             display: block;
             pointer-events: none;
+        }
+
+        .logo-wrapper img {
+            z-index: 1;
+        }
+
+        .logo-wrapper video {
             z-index: 2;
             opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
-        .logo-wrapper.playing img,
-        .logo-wrapper:hover img {
+        .logo-wrapper.playing img {
             opacity: 0;
         }
 
-        .logo-wrapper.playing .video-forward,
-        .logo-wrapper:hover .video-forward {
-            opacity: 1;
-        }
-
-        .logo-wrapper.reversing img {
-            opacity: 0;
-        }
-
-        .logo-wrapper.reversing .video-reverse {
+        .logo-wrapper.playing video {
             opacity: 1;
         }
 
@@ -212,96 +197,63 @@
     </style>
 </head>
 <body>
-    <img src="/top-left.png?v=3" alt="" class="corner top-left" aria-hidden="true">
-    <img src="/top-right.png?v=3" alt="" class="corner top-right" aria-hidden="true">
-    <img src="/bottom-left.png?v=3" alt="" class="corner bottom-left" aria-hidden="true">
-    <img src="/bottom-right.png?v=3" alt="" class="corner bottom-right" aria-hidden="true">
+    <img src="/top-left.png?v=4" alt="" class="corner top-left" aria-hidden="true">
+    <img src="/top-right.png?v=4" alt="" class="corner top-right" aria-hidden="true">
+    <img src="/bottom-left.png?v=4" alt="" class="corner bottom-left" aria-hidden="true">
+    <img src="/bottom-right.png?v=4" alt="" class="corner bottom-right" aria-hidden="true">
     <div class="hero">
         <div class="logo-wrapper">
-            <img src="/logo.png?v=3" alt="Ocean State Digital">
-            <video class="video-forward" src="/video.mp4?v=3" muted playsinline preload="auto"></video>
-            <video class="video-reverse" src="/video-reverse.mp4?v=3" muted playsinline preload="auto"></video>
+            <img src="/logo.png?v=4" alt="Ocean State Digital">
+            <video src="/video.mp4?v=4" muted playsinline preload="auto"></video>
         </div>
         <p class="eyebrow">Coming Soon</p>
         <h1>Ocean State Digital</h1>
     </div>
     <script>
         const wrapper = document.querySelector('.logo-wrapper');
-        const forwardVideo = wrapper.querySelector('.video-forward');
-        const reverseVideo = wrapper.querySelector('.video-reverse');
+        const video = wrapper.querySelector('video');
         let isHovering = false;
 
-        function resetVisuals() {
-            // Instantly hide videos to prevent flash of last frame during fade-out
-            forwardVideo.style.opacity = '0';
-            reverseVideo.style.opacity = '0';
-            forwardVideo.pause();
-            reverseVideo.pause();
-            wrapper.classList.remove('playing', 'reversing');
-
-            // Clear inline styles after logo transition completes
-            setTimeout(() => {
-                forwardVideo.style.opacity = '';
-                reverseVideo.style.opacity = '';
-            }, 350);
-        }
-
-        function fullReset() {
-            resetVisuals();
-            forwardVideo.currentTime = 0;
-            reverseVideo.currentTime = 0;
-        }
-
-        function playForward() {
-            fullReset();
-            wrapper.classList.add('playing');
-            forwardVideo.play().catch(() => {});
-        }
-
-        function playReverse() {
+        function showLogo() {
             wrapper.classList.remove('playing');
-            wrapper.classList.add('reversing');
-            reverseVideo.currentTime = 0;
-            reverseVideo.play().catch(() => {});
+        }
+
+        function playVideo() {
+            wrapper.classList.add('playing');
+            video.currentTime = 0;
+            video.play().catch(() => {});
         }
 
         // Desktop hover
         wrapper.addEventListener('mouseenter', () => {
             if (window.matchMedia('(hover: hover)').matches && !isHovering) {
                 isHovering = true;
-                playForward();
+                playVideo();
             }
         });
 
         wrapper.addEventListener('mouseleave', () => {
             if (window.matchMedia('(hover: hover)').matches) {
                 isHovering = false;
-                fullReset();
+                video.pause();
+                showLogo();
             }
         });
 
         // Mobile / touch tap
         wrapper.addEventListener('touchstart', (e) => {
             e.preventDefault();
-            if (wrapper.classList.contains('playing') || wrapper.classList.contains('reversing')) {
-                fullReset();
+            if (wrapper.classList.contains('playing')) {
+                video.pause();
+                showLogo();
             } else {
-                playForward();
+                playVideo();
             }
         }, { passive: false });
 
-        // When forward video ends, play reverse
-        forwardVideo.addEventListener('ended', () => {
-            playReverse();
-        });
-
-        // When reverse video ends, fade to logo then fully reset
-        reverseVideo.addEventListener('ended', () => {
-            resetVisuals();
-            setTimeout(() => {
-                forwardVideo.currentTime = 0;
-                reverseVideo.currentTime = 0;
-            }, 350);
+        // When video ends, show logo
+        video.addEventListener('ended', () => {
+            showLogo();
         });
     </script>
 </body>

@@ -147,10 +147,12 @@
             transition: opacity 0.3s ease;
         }
 
+        .logo-wrapper.playing img,
         .logo-wrapper:hover img {
             opacity: 0;
         }
 
+        .logo-wrapper.playing video,
         .logo-wrapper:hover video {
             opacity: 1;
         }
@@ -213,14 +215,66 @@
     <script>
         const wrapper = document.querySelector('.logo-wrapper');
         const video = wrapper.querySelector('video');
+        let isReversing = false;
 
-        wrapper.addEventListener('mouseenter', () => {
+        function resetVideo() {
+            video.pause();
+            video.playbackRate = 1;
             video.currentTime = 0;
+            wrapper.classList.remove('playing');
+            isReversing = false;
+        }
+
+        function playForward() {
+            video.playbackRate = 1;
+            video.currentTime = 0;
+            wrapper.classList.add('playing');
+            isReversing = false;
             video.play().catch(() => {});
+        }
+
+        function playReverse() {
+            isReversing = true;
+            video.playbackRate = -1;
+            video.currentTime = video.duration || video.seekable.end(0);
+            video.play().catch(() => {});
+        }
+
+        // Desktop hover
+        wrapper.addEventListener('mouseenter', () => {
+            if (window.matchMedia('(hover: hover)').matches) {
+                playForward();
+            }
         });
 
         wrapper.addEventListener('mouseleave', () => {
-            video.pause();
+            if (window.matchMedia('(hover: hover)').matches) {
+                resetVideo();
+            }
+        });
+
+        // Mobile / touch tap
+        wrapper.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            if (wrapper.classList.contains('playing')) {
+                resetVideo();
+            } else {
+                playForward();
+            }
+        }, { passive: false });
+
+        // When video reaches end, play in reverse
+        video.addEventListener('ended', () => {
+            if (!isReversing) {
+                playReverse();
+            }
+        });
+
+        // When reverse playback reaches start, fade logo back in
+        video.addEventListener('timeupdate', () => {
+            if (isReversing && video.currentTime <= 0.05) {
+                resetVideo();
+            }
         });
     </script>
 </body>

@@ -221,6 +221,7 @@
         const wrapper = document.querySelector('.logo-wrapper');
         const forwardVideo = wrapper.querySelector('.video-forward');
         const reverseVideo = wrapper.querySelector('.video-reverse');
+        let isHovering = false;
 
         function resetAll() {
             forwardVideo.pause();
@@ -245,13 +246,15 @@
 
         // Desktop hover
         wrapper.addEventListener('mouseenter', () => {
-            if (window.matchMedia('(hover: hover)').matches) {
+            if (window.matchMedia('(hover: hover)').matches && !isHovering) {
+                isHovering = true;
                 playForward();
             }
         });
 
         wrapper.addEventListener('mouseleave', () => {
             if (window.matchMedia('(hover: hover)').matches) {
+                isHovering = false;
                 resetAll();
             }
         });

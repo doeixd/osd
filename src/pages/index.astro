@@ -1,5 +1,6 @@
 ---
-// Ocean State Digital - Coming Soon
+// Ocean State Digital — Home (vintage nautical)
+import '@fontsource/bellefair';
 ---
 
 <!DOCTYPE html>
@@ -7,11 +8,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ocean State Digital</title>
+    <title>Ocean State Digital — Consulting and Training for AI</title>
     <link rel="icon" href="/favicon.ico?v=5" sizes="any">
-    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
-    <meta property="og:title" content="Ocean State Digital">
     <meta name="description" content="Practical AI tools for real business workflows. Ocean State Digital helps teams design, build, and adopt AI agents, automations, and software systems through consulting and hands-on training.">
+    <meta property="og:title" content="Ocean State Digital">
     <meta property="og:description" content="Practical AI tools for real business workflows. Ocean State Digital helps teams design, build, and adopt AI agents, automations, and software systems through consulting and hands-on training.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="/card_front.png?v=5">
@@ -19,27 +19,18 @@
     <meta name="twitter:image" content="/card_front.png?v=5">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <style>
         @import url('https://fonts.cdnfonts.com/css/hero-beam');
 
-        @property --eyebrow-hue {
-            syntax: '<angle>';
-            initial-value: 334.44deg;
-            inherits: false;
+        @font-face {
+            font-family: 'Shaprone';
+            src: url('/Shaprone-Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
         }
 
-        @keyframes hueCycle {
-            from {
-                --eyebrow-hue: 334.44deg;
-            }
-            to {
-                --eyebrow-hue: 694.44deg;
-            }
-        }
-
-        /* Perfect font fallback for HERO BEAM — metrics generated with Capsize */
         @font-face {
             font-family: 'HERO BEAM Fallback';
             src: local('Arial'), local('ArialMT');
@@ -49,85 +40,55 @@
             size-adjust: 112.1577%;
         }
 
-        /* Perfect font fallback for DM Sans — metrics generated with Capsize */
-        @font-face {
-            font-family: 'DM Sans Fallback';
-            src: local('Arial'), local('ArialMT');
-            ascent-override: 94.9001%;
-            descent-override: 29.6563%;
-            line-gap-override: 0%;
-            size-adjust: 104.531%;
-        }
-
-        @keyframes scaleDownBounce {
-            from {
-                transform: scale(2.5);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html,
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            width: 100dvw;
-            height: 100dvh;
-            overflow: hidden;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            color: #0f0f0f; background: #ffffff; line-height: 1.55; font-size: 18px;
         }
-
-        body {
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Bellefair', 'HERO BEAM', 'HERO BEAM Fallback', Arial, sans-serif;
+            line-height: 1.25;
+            letter-spacing: 0.04em;
+            font-weight: 400;
+        }
+        .hero h1 {
             font-family: 'HERO BEAM', 'HERO BEAM Fallback', Arial, sans-serif;
         }
 
-        .hero {
-            text-align: center;
-            animation: scaleDownBounce 1.2s linear(
-                0, 0.004, 0.016, 0.035, 0.063 9.1%, 0.141, 0.25, 0.391, 0.563, 0.765, 1,
-                0.891, 0.813 45.5%, 0.785, 0.766, 0.754, 0.75, 0.754, 0.766, 0.785, 0.813 63.6%, 0.891, 1 72.7%,
-                0.973, 0.953, 0.941, 0.938, 0.941, 0.953, 0.973, 1,
-                0.988, 0.984, 0.988, 1
-            ) both;
-        }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 
-        .eyebrow {
-            font-family: 'DM Sans', 'DM Sans Fallback', Arial, sans-serif;
-            font-size: 1.125rem;
-            font-weight: 500;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: oklch(0.77 0.26 var(--eyebrow-hue));
-            margin-bottom: 1.5rem;
-            animation: hueCycle 5s linear infinite;
+        /* Nav */
+        .nav {
+            padding: 1.5rem 0 2rem; border-bottom: 2px solid #0f0f0f; position: relative;
         }
-
-        h1 {
-            font-family: 'HERO BEAM', 'HERO BEAM Fallback', Arial, sans-serif;
-            font-size: clamp(3.2rem, 8dvw, 5rem);
-            color: #353535;
-            line-height: 1.2;
+        .nav::after {
+            content: ''; position: absolute; bottom: 6px; left: 0; right: 0;
+            height: 1px; background: #0f0f0f;
+        }
+        .nav-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 0.75rem;
+            font-family: 'Cinzel', serif; font-size: 1.125rem; font-weight: 600; letter-spacing: 0.08em;
+        }
+        .nav-wordmark {
+            height: 1.5rem; width: auto; object-fit: contain;
+        }
+        .nav-wordmark-text {
+            font-family: 'Cinzel', serif; font-size: 1.125rem; font-weight: 600; letter-spacing: 0.08em;
+            text-transform: uppercase; white-space: nowrap;
         }
 
         .logo-wrapper {
             position: relative;
             display: inline-block;
-            margin-bottom: 1rem;
             cursor: pointer;
-            width: clamp(260px, 22dvw, 280px);
+            width: 48px;
             aspect-ratio: 1 / 1;
         }
 
@@ -158,62 +119,525 @@
         .logo-wrapper.playing video {
             opacity: 1;
         }
+        .nav-links {
+            display: flex; gap: 2rem; list-style: none;
+            font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+        }
+        .nav-links a { position: relative; padding-bottom: 2px; }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px;
+            background: #0f0f0f; transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        @media (max-width: 768px) {
+            .nav-links { gap: 1.25rem; font-size: 0.7rem; }
+        }
 
-        .corner {
-            position: fixed;
-            width: auto;
-            height: auto;
-            object-fit: contain;
+        /* Hero */
+        .hero {
+            padding: 4rem 0 3rem; display: grid; grid-template-columns: 1.2fr 1fr;
+            gap: 3rem; align-items: center;
+        }
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+        }
+        .hero-ornament { margin-bottom: 1.5rem; }
+        .kicker {
+            font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.22em;
+            text-transform: uppercase; color: #444; margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 1.5rem;
+            letter-spacing: 0.02em; line-height: 1.15;
+        }
+        .hero p.lede {
+            font-size: 1.2rem; max-width: 500px; margin-bottom: 1rem; color: #1a1a1a;
+        }
+        .hero p.sub {
+            font-size: 1.05rem; max-width: 480px; margin-bottom: 2rem; color: #444; font-style: italic;
+        }
+        @media (max-width: 768px) {
+            .hero p.lede, .hero p.sub { margin-left: auto; margin-right: auto; }
+        }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        @media (max-width: 768px) {
+            .hero-buttons { justify-content: center; }
+        }
+
+        .btn-vintage {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1.75rem; border: 2px solid #0f0f0f;
+            font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.12em;
+            text-transform: uppercase; background: transparent; color: #0f0f0f;
+            cursor: pointer; position: relative; transition: all 0.2s;
+        }
+        .btn-vintage::before {
+            content: ''; position: absolute; inset: 3px; border: 1px solid #0f0f0f;
+            pointer-events: none; opacity: 0.25; transition: opacity 0.2s;
+        }
+        .btn-vintage:hover { background: #0f0f0f; color: #ffffff; }
+        .btn-vintage:hover::before { opacity: 0; }
+
+        /* Framed engraving figures (artwork ships white-on-black; inverted to suit the page) */
+        .figure-frame {
+            border: 2px solid #0f0f0f; padding: 10px; position: relative; background: #ffffff;
+        }
+        .figure-frame::before {
+            content: ''; position: absolute; inset: 4px; border: 1px solid #0f0f0f;
+            opacity: 0.25; pointer-events: none;
+        }
+        .figure-frame img.engraving {
+            filter: invert(1); width: 100%; height: auto; object-fit: contain;
+        }
+        .figure-frame figcaption {
+            font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.15em;
+            text-transform: uppercase; color: #555; text-align: center; padding: 0.6rem 0 0.2rem;
+        }
+        .hero-figure img.engraving { max-height: 440px; }
+
+        /* Full-width panorama band */
+        .band { padding: 1rem 0; }
+        .band .figure-frame img.engraving { max-height: 300px; width: 100%; object-fit: cover; }
+
+        /* Divider */
+        .divider {
+            display: flex; align-items: center; gap: 1rem; padding: 2rem 0;
+        }
+        .divider-line {
+            flex: 1; height: 2px; background: #0f0f0f; position: relative;
+        }
+        .divider-line::after {
+            content: ''; position: absolute; top: 5px; left: 0; right: 0;
+            height: 1px; background: #0f0f0f; opacity: 0.3;
+        }
+        .divider-ornament { flex-shrink: 0; }
+
+        /* Sections */
+        section { padding: 2rem 0; }
+        .section-head { text-align: center; margin-bottom: 2.5rem; }
+        .section-head .section-no {
+            font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.25em;
+            text-transform: uppercase; color: #555; display: block; margin-bottom: 0.5rem;
+        }
+        .section-title {
+            font-size: clamp(1.25rem, 3vw, 1.6rem);
+            letter-spacing: 0.08em;
+        }
+        .section-standfirst {
+            max-width: 620px; margin: 1rem auto 0; font-size: 1.1rem; color: #333; font-style: italic;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;
+        }
+        .ornate-card {
+            background: #ffffff; border: 2px solid #0f0f0f; padding: 2rem 1.5rem;
+            text-align: center; position: relative;
+        }
+        .ornate-card::before {
+            content: ''; position: absolute; inset: 5px; border: 1px solid #0f0f0f;
+            opacity: 0.25; pointer-events: none;
+        }
+        .ornate-card::after {
+            content: ''; position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%);
+            width: 40px; height: 2px; background: #ffffff;
+        }
+        .ornate-card .card-icon {
+            width: 48px; height: 48px; margin: 0 auto 1rem;
+        }
+        .ornate-card img.card-emblem {
+            width: 96px; height: 96px; margin: 0 auto 1rem; object-fit: contain;
+            filter: invert(1);
+        }
+        .ornate-card h3 {
+            font-size: 0.95rem; margin-bottom: 0.75rem; letter-spacing: 0.06em;
+        }
+        .ornate-card p { font-size: 1rem; color: #333; line-height: 1.5; }
+        .ornate-card p + p { margin-top: 0.75rem; }
+
+        /* Steps */
+        .steps { counter-reset: step; }
+        .steps .ornate-card { text-align: left; padding-top: 2.5rem; }
+        .steps .ornate-card::after { display: none; }
+        .step-no {
+            font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.25em;
+            text-transform: uppercase; color: #555; display: block; margin-bottom: 0.5rem;
+        }
+
+        /* Programs */
+        .programs .ornate-card {
+            padding: 1.25rem 1rem; text-align: left;
+            display: flex; align-items: flex-start; gap: 1rem;
+        }
+        .programs .ornate-card .card-icon {
+            margin: 0; flex-shrink: 0; width: 40px; height: 40px;
+        }
+        .programs .ornate-card h3 { font-size: 0.8rem; margin-bottom: 0.25rem; }
+        .programs .ornate-card p { font-size: 0.95rem; }
+
+        /* About */
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+            max-width: 1000px; margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+        .about-copy p { margin-bottom: 1.25rem; font-size: 1.12rem; color: #222; }
+        .about-copy p.dropcap::first-letter {
+            font-family: 'Bellefair', serif; font-size: 3.2em; float: left;
+            line-height: 0.85; padding-right: 0.12em; color: #0f0f0f;
+        }
+        .principles { list-style: none; }
+        .principles li {
+            border: 2px solid #0f0f0f; position: relative; padding: 1.1rem 1.25rem 1.1rem 1.25rem;
+            margin-bottom: 1rem; background: #ffffff;
+        }
+        .principles li::before {
+            content: ''; position: absolute; inset: 4px; border: 1px solid #0f0f0f;
+            opacity: 0.25; pointer-events: none;
+        }
+        .principles strong {
+            font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.12em;
+            text-transform: uppercase; display: block; margin-bottom: 0.25rem;
+        }
+        .principles span { font-size: 1rem; color: #333; }
+
+        /* Footer CTA */
+        .footer-cta {
+            border: 2px solid #0f0f0f; position: relative;
+            padding: 3rem 2rem; text-align: center; overflow: hidden;
+        }
+        .footer-cta::before {
+            content: ''; position: absolute; inset: 6px; border: 1px solid #0f0f0f;
+            opacity: 0.25; pointer-events: none;
+        }
+        .footer-cta-inner { position: relative; z-index: 1; }
+        .footer-cta h2 {
+            font-size: clamp(1.1rem, 3vw, 1.5rem); margin-bottom: 0.75rem; letter-spacing: 0.06em;
+        }
+        .footer-cta .tagline {
+            font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.15em;
+            text-transform: uppercase; margin-bottom: 1rem; color: #444;
+        }
+        .footer-email {
+            font-size: 1.25rem; margin-bottom: 1.5rem; letter-spacing: 0.04em;
+        }
+        .footer-email a { border-bottom: 1px solid #0f0f0f; }
+        .footer-email a:hover { background: #0f0f0f; color: #ffffff; }
+        .footer-wave {
+            position: absolute; bottom: 0; width: 180px; opacity: 0.9; pointer-events: none;
+        }
+        .footer-wave.left { left: 0; }
+        .footer-wave.right { right: 0; transform: scaleX(-1); }
+
+        .page-footer {
+            padding: 2rem 0; text-align: center; font-size: 0.85rem; color: #ffffff;
+            margin-top: 2rem; position: relative;
+            background-image: url('/processed-images/sea.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 200px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .page-footer::before {
+            content: ''; position: absolute; inset: 0;
+            background: rgba(0, 0, 0, 0.3);
             pointer-events: none;
-            z-index: 0;
         }
-
-        .corner.top-left,
-        .corner.top-right {
-            max-width: clamp(100px, 10dvw, 120px);
-            max-height: clamp(100px, 15dvh, 190px);
+        .page-footer-inner { position: relative; z-index: 1; }
+        .page-footer nav { margin-bottom: 0.5rem; }
+        .page-footer nav a {
+            font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.15em;
+            text-transform: uppercase; margin: 0 0.75rem; border-bottom: 1px solid transparent;
         }
-
-        .corner.bottom-left,
-        .corner.bottom-right {
-            max-width: clamp(100px, 10dvw, 150px);
-            max-height: clamp(130px, 15dvh, 200px);
-        }
-
-        .corner.top-left {
-            top: 0;
-            left: 0;
-        }
-
-        .corner.top-right {
-            top: 0;
-            right: 0;
-        }
-
-        .corner.bottom-left {
-            bottom: 0;
-            left: 0;
-        }
-
-        .corner.bottom-right {
-            bottom: 0;
-            right: 0;
-        }
+        .page-footer nav a:hover { border-bottom-color: #ffffff; }
     </style>
 </head>
 <body>
-    <img src="/top-left.png?v=5" alt="" class="corner top-left" aria-hidden="true" loading="lazy">
-    <img src="/top-right.png?v=5" alt="" class="corner top-right" aria-hidden="true" loading="lazy">
-    <img src="/bottom-left.png?v=5" alt="" class="corner bottom-left" aria-hidden="true" loading="lazy">
-    <img src="/bottom-right.png?v=5" alt="" class="corner bottom-right" aria-hidden="true" loading="lazy">
-    <div class="hero">
-        <div class="logo-wrapper">
-            <img src="/logo.png?v=5" alt="Ocean State Digital">
-            <video src="/video.mp4?v=5" muted playsinline></video>
-        </div>
-        <p class="eyebrow">Coming Soon</p>
-        <h1>Ocean State Digital</h1>
+    <div class="container">
+        <nav class="nav">
+            <div class="nav-inner">
+                <a href="#" class="nav-logo">
+                    <div class="logo-wrapper">
+                        <img src="/logo.png?v=5" alt="Ocean State Digital">
+                        <video src="/video.mp4?v=5" muted playsinline></video>
+                    </div>
+                    <span class="nav-wordmark-text">Ocean State Digital</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#approach">Approach</a></li>
+                    <li><a href="#workshops">Workshops</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main>
+            <section class="hero">
+                <div class="hero-text">
+                    <svg class="ornament hero-ornament" width="180" height="20" viewBox="0 0 180 20">
+                        <path d="M0 10h70M110 10h70" stroke="#0f0f0f" stroke-width="1"/>
+                        <circle cx="90" cy="10" r="4" fill="#0f0f0f"/>
+                        <circle cx="90" cy="10" r="8" stroke="#0f0f0f" stroke-width="1" fill="none"/>
+                    </svg>
+                    <p class="kicker">Rhode Island &middot; Consulting &amp; Training</p>
+                    <h1>Consulting and Training for AI</h1>
+                    <p class="lede">Ocean State Digital helps organizations adopt AI with a steady hand &mdash; designing agents and automations that fit real workflows, and teaching your people to use them well.</p>
+                    <p class="sub">No hype cycles. No hundred-slide decks. Practical tools, honest measurement, and teams that can steer themselves.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-vintage">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Book a Workshop
+                        </a>
+                        <a href="#services" class="btn-vintage">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                            Explore Services
+                        </a>
+                    </div>
+                </div>
+                <figure class="figure-frame hero-figure">
+                    <img class="engraving" src="/engravings/lighthouse.webp" alt="Lighthouse engraving — many paths leading to one light" fetchpriority="high">
+                    <figcaption>Many paths, one light</figcaption>
+                </figure>
+            </section>
+
+            <div class="band">
+                <figure class="figure-frame">
+                    <img class="engraving" src="/engravings/sailboat-panorama.webp" alt="Sailing sloop on open water, engraving" loading="lazy">
+                    <figcaption>Steady work in open water</figcaption>
+                </figure>
+            </div>
+
+            <div class="divider">
+                <div class="divider-line"></div>
+                <svg class="divider-ornament" width="40" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2l2 8h-4l2-8z" fill="#0f0f0f"/>
+                    <rect x="11" y="10" width="2" height="6"/>
+                    <path d="M6 18c4-2 8-2 12 0"/>
+                </svg>
+                <div class="divider-line"></div>
+            </div>
+
+            <section id="services">
+                <div class="section-head">
+                    <span class="section-no">No. 01 &mdash; What we do</span>
+                    <h2 class="section-title">Services for the Whole Voyage</h2>
+                    <p class="section-standfirst">Every engagement starts from your workflows &mdash; not from a model leaderboard. Here is where we can help.</p>
+                </div>
+                <div class="cards">
+                    <div class="ornate-card">
+                        <img class="card-emblem" src="/engravings/compass.webp" alt="" loading="lazy">
+                        <h3>AI Consulting</h3>
+                        <p>Where should AI actually help? We map your workflows, find the highest-leverage opportunities, and lay out a pragmatic roadmap.</p>
+                        <p>Expect plain language, honest trade-offs, and a plan your team can execute with or without us.</p>
+                    </div>
+                    <div class="ornate-card">
+                        <img class="card-emblem" src="/engravings/gear.webp" alt="" loading="lazy">
+                        <h3>AI Agent Strategy</h3>
+                        <p>We design and build AI agents that do real jobs: triaging requests, drafting documents, reconciling data across systems.</p>
+                        <p>Scoped tightly, measured honestly, and handed over with the training to keep them running.</p>
+                    </div>
+                    <div class="ornate-card">
+                        <img class="card-emblem" src="/engravings/hammer.webp" alt="" loading="lazy">
+                        <h3>Management Training</h3>
+                        <p>Tools do not fix broken systems. We teach modern management practices &mdash; clear ownership, steady cadence, honest retrospection.</p>
+                        <p>So new technology lands on solid ground instead of shifting sand.</p>
+                    </div>
+                    <div class="ornate-card">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 4c-3 0-5 2-5 4 0 4 3 6 5 10 2-4 5-6 5-10 0-2-2-4-5-4z"/>
+                            <path d="M12 7c-1.5 0-2.5 1-2.5 2.5S10.5 12 12 14c1.5-2 2.5-3 2.5-4.5S13.5 7 12 7z"/>
+                            <path d="M8 20c2-1 4-1 8 0"/>
+                        </svg>
+                        <h3>Workshops &amp; Education</h3>
+                        <p>Practical half-day and full-day sessions tailored to your industry, your tools, and your goals.</p>
+                        <p>Your team leaves having used the tools &mdash; not just having heard about them.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider">
+                <div class="divider-line"></div>
+                <svg class="divider-ornament" width="28" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3c-3 0-5 2-5 4 0 3 2 5 5 8 3-3 5-5 5-8 0-2-2-4-5-4z"/>
+                    <path d="M12 6c-1.5 0-2.5 1-2.5 2.5S10.5 10.5 12 12c1.5-1.5 2.5-2.5 2.5-3.5S13.5 6 12 6z"/>
+                </svg>
+                <div class="divider-line"></div>
+            </div>
+
+            <section id="approach">
+                <div class="section-head">
+                    <span class="section-no">No. 02 &mdash; How we work</span>
+                    <h2 class="section-title">Three Legs of the Passage</h2>
+                    <p class="section-standfirst">Small engagements, short feedback loops, and no black boxes. You always know where you stand.</p>
+                </div>
+                <div class="cards steps">
+                    <div class="ornate-card">
+                        <span class="step-no">Leg I</span>
+                        <h3>Chart the Course</h3>
+                        <p>A working session with your team to map workflows, surface pain points, and pick one high-value pilot. You keep the map either way.</p>
+                    </div>
+                    <div class="ornate-card">
+                        <span class="step-no">Leg II</span>
+                        <h3>Set Sail</h3>
+                        <p>We build alongside your people &mdash; in the open, in weeks rather than quarters. Every demo is a chance to correct course early.</p>
+                    </div>
+                    <div class="ornate-card">
+                        <span class="step-no">Leg III</span>
+                        <h3>Keep a Steady Helm</h3>
+                        <p>Training, documentation, and follow-up so the gains hold after we leave. The goal is a crew that can sail without us.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider">
+                <div class="divider-line"></div>
+                <svg class="divider-ornament" width="28" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3c-3 0-5 2-5 4 0 3 2 5 5 8 3-3 5-5 5-8 0-2-2-4-5-4z"/>
+                    <path d="M12 6c-1.5 0-2.5 1-2.5 2.5S10.5 10.5 12 12c1.5-1.5 2.5-2.5 2.5-3.5S13.5 6 12 6z"/>
+                </svg>
+                <div class="divider-line"></div>
+            </div>
+
+            <section id="workshops" class="programs">
+                <div class="section-head">
+                    <span class="section-no">No. 03 &mdash; Who we teach</span>
+                    <h2 class="section-title">Programs for Different Audiences</h2>
+                    <p class="section-standfirst">One subject, many decks. Each program is tuned to what its audience actually decides and does.</p>
+                </div>
+                <div class="cards">
+                    <div class="ornate-card">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <div>
+                            <h3>Leadership Teams</h3>
+                            <p>Strategy, alignment, and AI readiness. What to fund, what to skip, and how to tell the difference.</p>
+                        </div>
+                    </div>
+                    <div class="ornate-card">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="12" cy="12" r="6"/>
+                            <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+                        </svg>
+                        <div>
+                            <h3>Staff &amp; Operations</h3>
+                            <p>Practical tools for day-to-day efficiency. Real tasks from your backlog, worked live in the room.</p>
+                        </div>
+                    </div>
+                    <div class="ornate-card">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="6" y="4" width="12" height="16" rx="2"/>
+                            <circle cx="12" cy="10" r="3"/>
+                            <path d="M8 16h8M8 19h6"/>
+                        </svg>
+                        <div>
+                            <h3>Professional Services</h3>
+                            <p>AI solutions for firms that advise and deliver. Draft faster, review sharper, keep the judgment human.</p>
+                        </div>
+                    </div>
+                    <div class="ornate-card">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2l2 8h-4l2-8z"/>
+                            <rect x="10" y="10" width="4" height="10"/>
+                            <path d="M8 22h8"/>
+                            <path d="M6 20c4-2 8-2 12 0"/>
+                            <circle cx="12" cy="14" r="1" fill="#0f0f0f" stroke="none"/>
+                            <circle cx="12" cy="17" r="1" fill="#0f0f0f" stroke="none"/>
+                        </svg>
+                        <div>
+                            <h3>Industry-Specific Workshops</h3>
+                            <p>Tailored education for your industry &mdash; its regulations, its vocabulary, its edge cases.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider">
+                <div class="divider-line"></div>
+                <svg class="divider-ornament" width="28" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3c-3 0-5 2-5 4 0 3 2 5 5 8 3-3 5-5 5-8 0-2-2-4-5-4z"/>
+                    <path d="M12 6c-1.5 0-2.5 1-2.5 2.5S10.5 10.5 12 12c1.5-1.5 2.5-2.5 2.5-3.5S13.5 6 12 6z"/>
+                </svg>
+                <div class="divider-line"></div>
+            </div>
+
+            <section id="about">
+                <div class="section-head">
+                    <span class="section-no">No. 04 &mdash; About the firm</span>
+                    <h2 class="section-title">A Steady Hand in Open Water</h2>
+                </div>
+                <div class="about-grid">
+                    <div class="about-copy">
+                        <p class="dropcap">Ocean State Digital is a small consultancy for organizations that want AI to earn its keep. We work where the technology meets the Tuesday morning &mdash; the inbox, the spreadsheet, the status meeting &mdash; and we judge every tool by whether it makes that work better.</p>
+                        <p>We consult, we build, and above all we teach. An engagement succeeds when your team can carry on without us: running the agents, questioning the outputs, and knowing which new promises deserve a hearing and which deserve the horizon.</p>
+                    </div>
+                    <ul class="principles">
+                        <li>
+                            <strong>Practical before fashionable</strong>
+                            <span>We recommend boring solutions that work over brilliant ones that might.</span>
+                        </li>
+                        <li>
+                            <strong>Teaching before doing-for</strong>
+                            <span>Every build ships with training, so capability stays when we go.</span>
+                        </li>
+                        <li>
+                            <strong>Measured before claimed</strong>
+                            <span>If it cannot be observed in your workflow, it does not go in the report.</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="contact">
+                <div class="footer-cta">
+                    <svg class="footer-wave left" viewBox="0 0 200 120" fill="none">
+                        <path d="M0 80c20-10 40-20 60-15s40 25 60 20 50-30 80-25v60H0z" fill="#0f0f0f" opacity="0.9"/>
+                        <path d="M0 100c30-5 50-15 70-10s40 20 60 15 50-25 70-20v45H0z" fill="#0f0f0f" opacity="0.6"/>
+                        <circle cx="30" cy="30" r="4" fill="#0f0f0f" opacity="0.3"/>
+                        <circle cx="50" cy="50" r="3" fill="#0f0f0f" opacity="0.2"/>
+                    </svg>
+                    <svg class="footer-wave right" viewBox="0 0 200 120" fill="none">
+                        <path d="M0 80c20-10 40-20 60-15s40 25 60 20 50-30 80-25v60H0z" fill="#0f0f0f" opacity="0.9"/>
+                        <path d="M0 100c30-5 50-15 70-10s40 20 60 15 50-25 70-20v45H0z" fill="#0f0f0f" opacity="0.6"/>
+                        <circle cx="30" cy="30" r="4" fill="#0f0f0f" opacity="0.3"/>
+                        <circle cx="50" cy="50" r="3" fill="#0f0f0f" opacity="0.2"/>
+                    </svg>
+                    <div class="footer-cta-inner">
+                        <h2>Practical AI Education for Modern Organizations</h2>
+                        <p class="tagline">Consulting &nbsp;&bull;&nbsp; Training &nbsp;&bull;&nbsp; Workshops &nbsp;&bull;&nbsp; AI Agents</p>
+                        <p class="footer-email"><a href="mailto:founders@oceanstate.digital">founders@oceanstate.digital</a></p>
+                        <a href="mailto:founders@oceanstate.digital" class="btn-vintage">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 0 5 2 5 4 0 3-2 5-5 8-3-3-5-5-5-8 0-2 2-4 5-4z"/><path d="M12 5c1.5 0 2.5 1 2.5 2.5S13.5 10 12 12c-1.5-2-2.5-3-2.5-4.5S10.5 5 12 5z"/></svg>
+                            Get in Touch
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
+
+    <footer class="page-footer">
+        <div class="page-footer-inner">
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#approach">Approach</a>
+                <a href="#workshops">Workshops</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <p>&copy; 2026 Ocean State Digital &middot; founders@oceanstate.digital &middot; All rights reserved.</p>
+        </div>
+    </footer>
+
     <script>
         const wrapper = document.querySelector('.logo-wrapper');
         const video = wrapper.querySelector('video');
